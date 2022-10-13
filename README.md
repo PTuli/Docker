@@ -19,3 +19,28 @@
 - docker rm $(docker ps -aq) --> remove all containers at once
 - docker run -d --name webapp nginx:1.14-alpine <use name webapp and use the specified image>
 - docker rmi $(docker images -aq) -- delete all images at once 
+- docker run -i imgname -- interactive mode expects an input
+- docker run -it imgname -- get a terminal also in interactive mode
+- docker run -p 80:5000 imgname -- port mapping maps port 80 to default 5000
+- docker run -p8067:5000 imgname -- run multiple instances of application in a docker host
+- docker run -v opt/datadir:/var/lib/mysql mysql -- mount an external volume to store mysql data, if we remove container data persists
+- docker inspect contname -- get the complete details of a running container
+- docker logs contname -- logs of a particular container 
+- docker images -- count the number of images
+- $ docker build -t webapp-color:tag . -- the dot in the last indicates current dir has dockerfile -t opens the terminal
+- docker inspect container name -- can see env variables and other things
+- docker run -p 38282:8080 --name blue-app -e APP_COLOR=blue -d kodekloud/simple-webapp --set port ,name,env var
+- docker exec -it webapp env -- run a docker container and see env variables
+- docker-compose up
+- docker run --cpus=0.5 ubuntu -- cgroups
+- docker run -v /opt/data:/var/lib/mysql -d --name mysql-db -e MYSQL_ROOT_PASSWORD=db_pass123 mysql -- mount a storage volume
+- docker network ls --number of networks in a setup
+- docker inspect alpine-1 --inspect a container
+- docker network inspect bridge --inspect bridge netwrok on docker host
+- docker network create --driver bridge --subnet 182.18.0.1/24 --gateway 182.18.0.1 wp-mysql-network -- create a new network
+- docker run -d -e MYSQL_ROOT_PASSWORD=db_pass123 --name mysql-db --network wp-mysql-network mysql:5.6 -- atach a service to the newnetwork
+- docker run -d -p 5000:5000 --restart=always --name my-registry registry:2 -- deploying a registry server on our own
+- docker run --memory=100m ubuntu
+- docker volume create data_volume - create data_volume folder in /var/lib/docker/volumes/data_volume
+- docker run -v data_volume:/var/lib/mysql mysql
+- files are stored in same place as containerid
